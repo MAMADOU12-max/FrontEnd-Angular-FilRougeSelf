@@ -1,9 +1,9 @@
 export class ProfilModal {
   id: number;
-  profil: string;
+  libelle: string;
 
-  constructor(id: number, profil: string) {
+  constructor(id: number, libelle: string) {
     this.id = id;
-    this.profil = profil;
+    this.libelle = libelle;
   }
 }

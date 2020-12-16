@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../Services/user.service';
-import * as jwt_decode from "jwt-decode";
-import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +14,10 @@ export class LoginComponent implements OnInit {
   formSignup: FormGroup ;
   submitted = false;
   hide = true;
+  fakeAuth = 'Your data given is not matched, please verify again!';
+  fakedata = false ;
 
-
-  constructor(private userService: UserService, private formBuilder: FormBuilder) {
-
-  }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.formSignup = this.formBuilder.group({
@@ -29,24 +26,24 @@ export class LoginComponent implements OnInit {
     }) ;
   }
 
-
-
   get f() {
     return this.formSignup.controls ;
   }
 
+  // tslint:disable-next-line:typedef
   onFormSubmit() {
      this.submitted = true ;
      if (this.formSignup.invalid) {
       return;
      }
-    this.userService.Authentification(this.password, this.username).subscribe(data => {
-      console.log(data)
-    }, error => console.log(error)) ;
+     this.userService.Authentification(this.password, this.username).subscribe(data => {
+      console.log(data);
+
+    }, error => {
+      this.fakedata = true ;
+      return this.fakeAuth;
+    } ) ;
   }
-
-
-
 
   //
   // getErrorMessage() {

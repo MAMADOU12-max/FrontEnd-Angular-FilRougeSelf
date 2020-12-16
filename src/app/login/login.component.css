@@ -3,13 +3,7 @@
 }
 
 
-.app-header {
-  display: flex;
-  justify-content: center;
-  background-color: beige;
-  font-family: Arial;
-  font-size: 67px;
-}
+
 
 .example-card {
   max-width: 400px;
@@ -27,7 +21,7 @@
 
 body {
   height: 100%;
-  background-image: url("../../assets/images/background.jpg");
+  background-image: url("../../assets/images/undraw_Graduation_ktn0.svg");
   background-size: cover;
   position: absolute;
   width: 100%;
